@@ -5,17 +5,24 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    GameObject[] addresses;
+    GameObject[] enemy;
+
+    [SerializeField]
+    GameObject bullet;
 
     [SerializeField]
     float speed;
 
+    [SerializeField]
+    float bulletSpeed;
+
     public bool IsMoving { get; set; } = true;
-    public int addressIndex { get; set; } = 0;
+
+    public int EnemyIndex { get; set; } = 0;
 
     void Update()
     {
-        Fire();    
+        Fire();
     }
 
     void FixedUpdate()
@@ -27,8 +34,10 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            IsMoving = true;
-            Debug.Log(IsMoving);
+            GameObject bulletObject = Instantiate(bullet, transform.position, Quaternion.identity, transform);
+            bulletObject
+                .GetComponent<Rigidbody>()
+                .AddForce((Utils.HeadOfHuman(enemy[EnemyIndex].transform.position) - transform.position) * bulletSpeed);
         }
     }
 
@@ -39,19 +48,19 @@ public class Player : MonoBehaviour
             Vector3 tempPosition = transform.position;
 
             // For walls on right
-            if(addressIndex % 2 == 0)
+            if (EnemyIndex % 2 == 0)
             {
-                if (transform.position.x < addresses[addressIndex].transform.position.x)
+                if (transform.position.x < enemy[EnemyIndex].transform.position.x)
                     tempPosition.x += speed;
-                if (transform.position.z < addresses[addressIndex].transform.position.z)
+                if (transform.position.z < enemy[EnemyIndex].transform.position.z)
                     tempPosition.z += speed;
             }
             // For walls on left
             else
             {
-                if (transform.position.x > addresses[addressIndex].transform.position.x)
+                if (transform.position.x > enemy[EnemyIndex].transform.position.x)
                     tempPosition.x -= speed;
-                if (transform.position.z < addresses[addressIndex].transform.position.z)
+                if (transform.position.z < enemy[EnemyIndex].transform.position.z)
                     tempPosition.z += speed;
             }
 
