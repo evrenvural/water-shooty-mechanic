@@ -1,26 +1,90 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    GameObject playerObject;
+    
+    [SerializeField]
+    float bulletSpeed;
+
+    [SerializeField]
+    GameObject bullet;
+    
+    [SerializeField]
+    int health = 10;
+    
+    Player player;
+    bool playerTriggered = false;
+    bool wait = true;
+    
+    public bool IsDead { get; set; } = false;
+
     void Start()
     {
-
+        player = playerObject.GetComponent<Player>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        Fire();
+        IsDeadControl();
     }
-    private void OnTriggerEnter(Collider player)
+    
+    void OnTriggerEnter(Collider collider)
     {
-        if (player.tag == "Player")
+        if (collider.tag == "Player")
         {
-            player.GetComponent<Player>().IsMoving = false;
-            player.GetComponent<Player>().EnemyIndex++;
+            player.State = Utils.HumanState.immutable;
+            if (!playerTriggered)
+            {
+                player.EnemyIndex++;
+                playerTriggered = true;
+            }
         }
+        else if (collider.tag == "Bullet" && GetComponent<Renderer>().enabled)
+        {
+            health--;
+
+            if (IsDead)
+            {
+                GetComponent<Renderer>().enabled = false;
+
+                player.State = Utils.HumanState.isWalking;
+            }
+
+            Destroy(collider.gameObject);
+        }
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.8f);
+        wait = true;
+    }
+
+    private void Fire()
+    {
+        if (!IsDead && GetComponent<Renderer>().enabled)
+        {
+            if (player.State == Utils.HumanState.isShooting)
+            {
+                if (wait)
+                {
+                    Instantiate(bullet, transform.position, Quaternion.identity, transform)
+                        .GetComponent<Rigidbody>().AddForce((playerObject.transform.position - transform.position) * bulletSpeed);
+                    
+                    wait = false;
+                    
+                    StartCoroutine(Wait());
+                }
+            }
+        }
+    }
+
+    private void IsDeadControl()
+    {
+        IsDead = health <= 0;
     }
 }
