@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,12 +12,20 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject[] enemyObjects;
 
+    [SerializeField]
+    Text playerHealthText;
+
+    [SerializeField]
+    Text enemyHealthText;
+
     void Update()
     {
         if (GameStateControl() == Utils.GameState.win)
-            Debug.Log("KAZANDI");
+            SceneManager.LoadScene(Utils.Scenes.WinUI);
         else if (GameStateControl() == Utils.GameState.lose)
-            Debug.Log("YENİLDİ");
+            SceneManager.LoadScene(Utils.Scenes.LoseUI);
+
+        UIControl();
     }
 
     Utils.GameState GameStateControl()
@@ -28,14 +38,29 @@ public class GameManager : MonoBehaviour
             return Utils.GameState.isContinuing;
     }
 
+    void UIControl()
+    {
+        if (playerObject.GetComponent<ILivingCreature>().Health >= 0)
+            playerHealthText.text = "Can: "
+                + playerObject.GetComponent<ILivingCreature>().Health;
+
+        if (enemyObjects[playerObject
+                .GetComponent<Player>().EnemyIndex]
+                .GetComponent<ILivingCreature>().Health >= 0)
+            enemyHealthText.text = "Düşman Canı: "
+                + enemyObjects[playerObject.GetComponent<Player>().EnemyIndex]
+                    .GetComponent<ILivingCreature>().Health;
+    } 
+
     bool IsDeadEnemies()
     {
         int numberOfDead = 0;
+
         foreach (GameObject enemyObject in enemyObjects)
         {
             if (enemyObject.GetComponent<Enemy>().IsDead)
                 numberOfDead++;
         }
-        return numberOfDead == enemyObjects.Length;
+        return numberOfDead == 2;
     }
 }

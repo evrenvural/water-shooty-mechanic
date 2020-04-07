@@ -1,9 +1,11 @@
 ﻿<Properties StartupConfiguration="{585FB346-F547-30B2-A8C4-9B277E769507}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Bullet.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Button.cs">
     <Files>
-      <File FileName="Assets/Scripts/Player.cs" Line="21" Column="22" />
-      <File FileName="Assets/Scripts/Bullet.cs" Line="22" Column="17" />
-      <File FileName="Assets/Scripts/Address.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/Root.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Enemy.cs" Line="29" Column="16" />
+      <File FileName="Assets/Scripts/Player.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Button.cs" Line="13" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,7 +13,7 @@
           <Node name="Water Shooty Mechanic" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Bullet.cs" selected="True" />
+                <Node name="Button.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -21,7 +23,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="36adb45b-2784-4b34-a996-71efcf1b2ed1" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="66642d6b-c5af-4244-8fe4-19c07ebb257f" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

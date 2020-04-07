@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ILivingCreature
 {
     [SerializeField]
     GameObject[] enemies;
@@ -15,13 +15,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     float bulletSpeed;
 
-    int health = 15;
-
     public Utils.HumanState State { get; set; } = Utils.HumanState.isWalking;
 
     public bool IsDead { get; set; } = false;         
 
     public int EnemyIndex { get; set; } = 0;
+    
+    public int Health { get; set; } = 15;
 
     bool wait = true;
 
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
     {
         if (collider.tag == "BulletEnemy")
         {
-            health--;
+            Health--;
             Destroy(collider.gameObject);
         }
     }
@@ -157,6 +157,6 @@ public class Player : MonoBehaviour
 
     private void IsDeadControl()
     {
-        IsDead = health <= 0;
+        IsDead = Health <= 0;
     }
 }

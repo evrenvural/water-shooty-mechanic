@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, ILivingCreature
 {
     [SerializeField]
     GameObject playerObject;
@@ -12,13 +12,11 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     GameObject bullet;
     
-    [SerializeField]
-    int health = 10;
-    
     Player player;
     bool playerTriggered = false;
     bool wait = true;
     
+    public int Health { get; set; } = 10;
     public bool IsDead { get; set; } = false;
 
     void Start()
@@ -45,7 +43,7 @@ public class Enemy : MonoBehaviour
         }
         else if (collider.tag == "Bullet" && GetComponent<Renderer>().enabled)
         {
-            health--;
+            Health--;
 
             if (IsDead)
             {
@@ -85,6 +83,6 @@ public class Enemy : MonoBehaviour
 
     private void IsDeadControl()
     {
-        IsDead = health <= 0;
+        IsDead = Health <= 0;
     }
 }
