@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Text enemyHealthText;
 
+    [SerializeField]
+    Text numberOfDeathText;
+
     void Update()
     {
         if (GameStateControl() == Utils.GameState.win)
@@ -50,17 +53,26 @@ public class GameManager : MonoBehaviour
             enemyHealthText.text = "Düşman Canı: "
                 + enemyObjects[playerObject.GetComponent<Player>().EnemyIndex]
                     .GetComponent<ILivingCreature>().Health;
-    } 
 
-    bool IsDeadEnemies()
-    {
-        int numberOfDead = 0;
-
+        int numberOfDeath = 0;
         foreach (GameObject enemyObject in enemyObjects)
         {
             if (enemyObject.GetComponent<Enemy>().IsDead)
-                numberOfDead++;
+            {
+                numberOfDeath++;
+            }
         }
-        return numberOfDead == 2;
+        numberOfDeathText.text = "Ölü Düşman Sayısı: " + numberOfDeath;
+    }
+
+    bool IsDeadEnemies()
+    {
+        int numberOfDeath = 0;
+        foreach (GameObject enemyObject in enemyObjects)
+        {
+            if (enemyObject.GetComponent<Enemy>().IsDead)
+                numberOfDeath++;
+        }
+        return numberOfDeath == 2;
     }
 }

@@ -10,6 +10,9 @@ public class Player : MonoBehaviour, ILivingCreature
     GameObject bullet;
 
     [SerializeField]
+    float waitForGun;
+
+    [SerializeField]
     float speed;
 
     [SerializeField]
@@ -48,7 +51,7 @@ public class Player : MonoBehaviour, ILivingCreature
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(waitForGun);
         wait = true;
     }
 
@@ -64,7 +67,9 @@ public class Player : MonoBehaviour, ILivingCreature
                     {
                         Instantiate(bullet, transform.position, Quaternion.identity, transform)
                                                 .GetComponent<Rigidbody>()
-                                                .AddForce((enemies[EnemyIndex].transform.position - transform.position) * bulletSpeed);
+                                                .AddForce((enemies[EnemyIndex].transform.position
+                                                - Utils.ReadyFirePosition(enemies[EnemyIndex - 1].transform.position))
+                                                * bulletSpeed);
                         wait = false;
                         StartCoroutine(Wait());
                     }

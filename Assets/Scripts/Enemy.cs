@@ -5,7 +5,10 @@ public class Enemy : MonoBehaviour, ILivingCreature
 {
     [SerializeField]
     GameObject playerObject;
-    
+
+    [SerializeField]
+    float waitForGun;
+
     [SerializeField]
     float bulletSpeed;
 
@@ -16,7 +19,7 @@ public class Enemy : MonoBehaviour, ILivingCreature
     bool playerTriggered = false;
     bool wait = true;
     
-    public int Health { get; set; } = 10;
+    public int Health { get; set; } = 15;
     public bool IsDead { get; set; } = false;
 
     void Start()
@@ -58,7 +61,7 @@ public class Enemy : MonoBehaviour, ILivingCreature
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(waitForGun);
         wait = true;
     }
 
