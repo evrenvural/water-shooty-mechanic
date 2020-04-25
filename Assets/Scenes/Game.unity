@@ -265,6 +265,83 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &307983784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 307983785}
+  - component: {fileID: 307983787}
+  - component: {fileID: 307983786}
+  m_Layer: 5
+  m_Name: UmbrellaCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &307983785
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307983784}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1808762830}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 16}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &307983786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307983784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 17
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\u015Eemsiye Sayac\u0131: 0"
+--- !u!222 &307983787
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307983784}
+  m_CullTransparentMesh: 0
 --- !u!1 &465466082
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +379,7 @@ MonoBehaviour:
   playerHealthText: {fileID: 473160970}
   enemyHealthText: {fileID: 1574275861}
   numberOfDeathText: {fileID: 1832237727}
+  umbrellaCounterText: {fileID: 307983786}
 --- !u!4 &465466084
 Transform:
   m_ObjectHideFlags: 0
@@ -700,8 +778,8 @@ GameObject:
   - component: {fileID: 671798033}
   - component: {fileID: 671798036}
   - component: {fileID: 671798035}
-  - component: {fileID: 671798034}
   - component: {fileID: 671798037}
+  - component: {fileID: 671798034}
   m_Layer: 0
   m_Name: Wall (1)
   m_TagString: Untagged
@@ -792,7 +870,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 671798032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87689de9c547d458fab25d353df951c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 185b13ab734334d77b940726b470d05d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &705507993
@@ -1119,9 +1197,12 @@ MonoBehaviour:
   - {fileID: 802565837}
   - {fileID: 508655390}
   bullet: {fileID: 1410198003845355926, guid: 7b88499346dd242c39dc8d333055761c, type: 3}
+  umbrella: {fileID: 4632705491208540016, guid: 3dc24fbf4989841ecbf8a0a602a16c88,
+    type: 3}
   waitForGun: 0.3
-  speed: 0.1
+  speed: 0.2
   bulletSpeed: 10
+  openUmbrellaSeconds: 5
 --- !u!136 &1166539003
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1225,8 +1306,8 @@ GameObject:
   - component: {fileID: 1313027159}
   - component: {fileID: 1313027162}
   - component: {fileID: 1313027161}
-  - component: {fileID: 1313027160}
   - component: {fileID: 1313027163}
+  - component: {fileID: 1313027160}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -1317,7 +1398,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1313027158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87689de9c547d458fab25d353df951c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 185b13ab734334d77b940726b470d05d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1393306409
@@ -1523,6 +1604,7 @@ RectTransform:
   - {fileID: 473160968}
   - {fileID: 1574275860}
   - {fileID: 1832237726}
+  - {fileID: 307983785}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1619,8 +1701,8 @@ GameObject:
   - component: {fileID: 2109637456}
   - component: {fileID: 2109637459}
   - component: {fileID: 2109637458}
-  - component: {fileID: 2109637457}
   - component: {fileID: 2109637460}
+  - component: {fileID: 2109637457}
   m_Layer: 0
   m_Name: Wall (2)
   m_TagString: Untagged
@@ -1711,6 +1793,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2109637455}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87689de9c547d458fab25d353df951c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 185b13ab734334d77b940726b470d05d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -1,10 +1,13 @@
 ﻿<Properties StartupConfiguration="{C53AC7E9-69BC-B7A0-0534-6C3446CBAF29}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Enemy.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Utils.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameManager.cs" Line="66" Column="6" />
-      <File FileName="Assets/Scripts/Enemy.cs" Line="74" Column="26" />
-      <File FileName="Assets/Scripts/Player.cs" />
-      <File FileName="Assets/Scripts/Utils.cs" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="81" Column="93" />
+      <File FileName="Assets/Scripts/Player.cs" Line="13" Column="25" />
+      <File FileName="Assets/Scripts/TimeCounter.cs" Line="16" Column="25" />
+      <File FileName="Assets/Scripts/Enemy.cs" Line="22" Column="41" />
+      <File FileName="Assets/Scripts/Wall.cs" Line="5" Column="5" />
+      <File FileName="Assets/Scripts/Umbrella.cs" Line="10" Column="39" />
+      <File FileName="Assets/Scripts/Utils.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,7 +15,7 @@
           <Node name="water-shooty-mechanic" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Enemy.cs" selected="True" />
+                <Node name="Utils.cs" selected="True" />
               </Node>
             </Node>
           </Node>

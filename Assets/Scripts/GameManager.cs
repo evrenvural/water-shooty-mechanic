@@ -21,6 +21,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Text numberOfDeathText;
 
+    [SerializeField]
+    Text umbrellaCounterText;
+
+    Player player;
+
+    void Start()
+    {
+        player = playerObject.GetComponent<Player>();
+    }
+
     void Update()
     {
         if (GameStateControl() == Utils.GameState.win)
@@ -33,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     Utils.GameState GameStateControl()
     {
-        if (playerObject.GetComponent<Player>().IsDead)
+        if (player.IsDead)
             return Utils.GameState.lose;
         else if (IsDeadEnemies())
             return Utils.GameState.win;
@@ -43,17 +53,20 @@ public class GameManager : MonoBehaviour
 
     void UIControl()
     {
+        // Player Health
         if (playerObject.GetComponent<ILivingCreature>().Health >= 0)
             playerHealthText.text = "Can: "
                 + playerObject.GetComponent<ILivingCreature>().Health;
 
+        // Enemy Health
         if (enemyObjects[playerObject
                 .GetComponent<Player>().EnemyIndex]
                 .GetComponent<ILivingCreature>().Health >= 0)
             enemyHealthText.text = "Düşman Canı: "
-                + enemyObjects[playerObject.GetComponent<Player>().EnemyIndex]
+                + enemyObjects[player.EnemyIndex]
                     .GetComponent<ILivingCreature>().Health;
 
+        // Number Of Deaths
         int numberOfDeath = 0;
         foreach (GameObject enemyObject in enemyObjects)
         {
@@ -63,6 +76,10 @@ public class GameManager : MonoBehaviour
             }
         }
         numberOfDeathText.text = "Ölü Düşman Sayısı: " + numberOfDeath;
+
+        // Umbrella Counter
+            umbrellaCounterText.text = "Şemsiye Sayacı: " + player.SecondsForUmbrella + "/5";
+
     }
 
     bool IsDeadEnemies()

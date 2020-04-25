@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour, ILivingCreature
     bool playerTriggered = false;
     bool wait = true;
     
-    public int Health { get; set; } = 15;
+    public int Health { get; set; } = 14;
     public bool IsDead { get; set; } = false;
 
     void Start()
@@ -46,14 +46,14 @@ public class Enemy : MonoBehaviour, ILivingCreature
         }
         else if (collider.tag == "Bullet" && GetComponent<Renderer>().enabled)
         {
-            Health--;
-
             if (IsDead)
             {
                 GetComponent<Renderer>().enabled = false;
 
                 player.State = Utils.HumanState.isWalking;
             }
+
+            Health--;
 
             Destroy(collider.gameObject);
         }

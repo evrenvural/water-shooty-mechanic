@@ -10,6 +10,9 @@ public class Player : MonoBehaviour, ILivingCreature
     GameObject bullet;
 
     [SerializeField]
+    GameObject umbrella;
+
+    [SerializeField]
     float waitForGun;
 
     [SerializeField]
@@ -17,6 +20,9 @@ public class Player : MonoBehaviour, ILivingCreature
 
     [SerializeField]
     float bulletSpeed;
+
+    [SerializeField]
+    int openUmbrellaSeconds;
 
     public Utils.HumanState State { get; set; } = Utils.HumanState.isWalking;
 
@@ -26,6 +32,10 @@ public class Player : MonoBehaviour, ILivingCreature
     
     public int Health { get; set; } = 15;
 
+    public int SecondsForUmbrella { get; set; } = 0;
+
+    public bool IsOpenUmbrella { get; set; } = false;
+
     bool wait = true;
 
     void Update()
@@ -33,6 +43,7 @@ public class Player : MonoBehaviour, ILivingCreature
         Fire();
         IsReadyForFireControl();
         IsDeadControl();
+        UmbrellaControl();
     }
 
     void FixedUpdate()
@@ -42,7 +53,7 @@ public class Player : MonoBehaviour, ILivingCreature
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag == "BulletEnemy")
+        if (collider.tag == "BulletEnemy" && State != Utils.HumanState.isWalking)
         {
             Health--;
             Destroy(collider.gameObject);
@@ -157,6 +168,40 @@ public class Player : MonoBehaviour, ILivingCreature
                 if (transform.position.x <= Utils.ReadyFirePosition(enemies[EnemyIndex - 1].transform.position).x)
                     State = Utils.HumanState.isShooting;
             }
+        }
+    }
+
+    private void UmbrellaControl()
+    {
+        if(State == Utils.HumanState.isShooting || State == Utils.HumanState.isPreparingToShoot)
+            SecondsForUmbrella += TimeCounter.CountSeconds();
+        
+        else if(State == Utils.HumanState.immutable || State == Utils.HumanState.isbackingToCover)
+            if(SecondsForUmbrella > 0)
+                SecondsForUmbrella -= TimeCounter.CountSeconds();
+        
+        if(SecondsForUmbrella >= openUmbrellaSeconds)
+            OpenUmbrella();
+
+        if(SecondsForUmbrella <= 0)
+            CloseUmbrella(); 
+    }
+
+    private void OpenUmbrella()
+    {
+        if(!IsOpenUmbrella) {
+            Vector3 position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2f);
+            Instantiate(umbrella, position, Quaternion.identity);
+            IsOpenUmbrella = true;
+        }
+    }
+
+    private void CloseUmbrella()
+    {
+        if(IsOpenUmbrella)
+        {
+            GameObject umbrellaObject = GameObject.FindGameObjectWithTag("Umbrella"); 
+            Destroy(umbrellaObject);
         }
     }
 

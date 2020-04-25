@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Wall : MonoBehaviour
+public class Block : MonoBehaviour
 {
     void OnTriggerExit(Collider collider)
     {

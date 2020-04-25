@@ -32,4 +32,19 @@ public static class Utils
 
         return tempPosition;
     }
+
+    public static Vector3 UmbrellaRotation(Vector3 position)
+    {
+        Vector3 tempPosition = position;
+        if (position.x < 0)
+        {
+            tempPosition.x += 1.3f;
+        }
+        else
+        {
+            tempPosition.x -= 1f;
+        }
+
+        return tempPosition;
+    }
 }

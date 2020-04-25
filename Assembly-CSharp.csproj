@@ -63,14 +63,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Block.cs" />
     <Compile Include="Assets\Scripts\Button.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\ILivingCreature.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Root.cs" />
+    <Compile Include="Assets\Scripts\TimeCounter.cs" />
+    <Compile Include="Assets\Scripts\Umbrella.cs" />
     <Compile Include="Assets\Scripts\Utils.cs" />
-    <Compile Include="Assets\Scripts\Wall.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/evrenvural/Documents/Projeler/water-shooty-mechanic/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
