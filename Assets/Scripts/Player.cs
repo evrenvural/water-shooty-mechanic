@@ -65,10 +65,10 @@ public class Player : MonoBehaviour, ILivingCreature
                 {
                     if (wait)
                     {
-                        Instantiate(bullet, transform.position, Quaternion.identity, transform)
+                        Instantiate(bullet, transform.position, Quaternion.identity)
                                                 .GetComponent<Rigidbody>()
                                                 .AddForce((enemies[EnemyIndex].transform.position
-                                                - Utils.ReadyFirePosition(enemies[EnemyIndex - 1].transform.position))
+                                                - transform.position)
                                                 * bulletSpeed);
                         wait = false;
                         StartCoroutine(Wait());

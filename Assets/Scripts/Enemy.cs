@@ -74,7 +74,9 @@ public class Enemy : MonoBehaviour, ILivingCreature
                 if (wait)
                 {
                     Instantiate(bullet, transform.position, Quaternion.identity, transform)
-                        .GetComponent<Rigidbody>().AddForce((playerObject.transform.position - transform.position) * bulletSpeed);
+                        .GetComponent<Rigidbody>().AddForce(
+                        (playerObject.transform.position - transform.position)
+                        * bulletSpeed);
                     
                     wait = false;
                     
