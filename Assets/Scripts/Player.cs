@@ -32,9 +32,23 @@ public class Player : MonoBehaviour, ILivingCreature
     
     public int Health { get; set; } = 15;
 
-    public int SecondsForUmbrella { get; set; } = 0;
+    public int SecondsForUmbrella
+    {
+        get { return secondsForUmbrella; }
+        set
+        {
+            if (value <= 0)
+                secondsForUmbrella = 0;
+            else if (value >= 5)
+                secondsForUmbrella = 5;
+            else
+                secondsForUmbrella = value;
+        }
+    }
 
     public bool IsOpenUmbrella { get; set; } = false;
+
+    int secondsForUmbrella = 0;
 
     bool wait = true;
 
@@ -173,17 +187,20 @@ public class Player : MonoBehaviour, ILivingCreature
 
     private void UmbrellaControl()
     {
-        if(State == Utils.HumanState.isShooting || State == Utils.HumanState.isPreparingToShoot)
+        if ((State == Utils.HumanState.isShooting
+            || State == Utils.HumanState.isPreparingToShoot)
+            && !IsOpenUmbrella)
             SecondsForUmbrella += TimeCounter.CountSeconds();
         
-        else if(State == Utils.HumanState.immutable || State == Utils.HumanState.isbackingToCover)
-            if(SecondsForUmbrella > 0)
-                SecondsForUmbrella -= TimeCounter.CountSeconds();
+        else if ((State == Utils.HumanState.immutable
+            || State == Utils.HumanState.isbackingToCover)
+            || IsOpenUmbrella)
+            SecondsForUmbrella -= TimeCounter.CountSeconds();
         
-        if(SecondsForUmbrella >= openUmbrellaSeconds)
+        if (SecondsForUmbrella >= openUmbrellaSeconds)
             OpenUmbrella();
 
-        if(SecondsForUmbrella <= 0)
+        if (SecondsForUmbrella <= 0)
             CloseUmbrella(); 
     }
 
@@ -202,6 +219,7 @@ public class Player : MonoBehaviour, ILivingCreature
         {
             GameObject umbrellaObject = GameObject.FindGameObjectWithTag("Umbrella"); 
             Destroy(umbrellaObject);
+            IsOpenUmbrella = false;
         }
     }
 

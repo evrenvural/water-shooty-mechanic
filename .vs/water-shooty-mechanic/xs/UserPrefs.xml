@@ -1,13 +1,12 @@
 ﻿<Properties StartupConfiguration="{C53AC7E9-69BC-B7A0-0534-6C3446CBAF29}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Utils.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
     <Files>
       <File FileName="Assets/Scripts/GameManager.cs" Line="81" Column="93" />
-      <File FileName="Assets/Scripts/Player.cs" Line="13" Column="25" />
-      <File FileName="Assets/Scripts/TimeCounter.cs" Line="16" Column="25" />
-      <File FileName="Assets/Scripts/Enemy.cs" Line="22" Column="41" />
-      <File FileName="Assets/Scripts/Wall.cs" Line="5" Column="5" />
-      <File FileName="Assets/Scripts/Umbrella.cs" Line="10" Column="39" />
-      <File FileName="Assets/Scripts/Utils.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Player.cs" Line="208" Column="33" />
+      <File FileName="Assets/Scripts/TimeCounter.cs" />
+      <File FileName="Assets/Scripts/Enemy.cs" />
+      <File FileName="Assets/Scripts/Umbrella.cs" />
+      <File FileName="Assets/Scripts/Utils.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,7 +14,7 @@
           <Node name="water-shooty-mechanic" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Utils.cs" selected="True" />
+                <Node name="GameManager.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -25,7 +24,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="849a9e5c-5847-48db-b555-cd12576e7068" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f4a2b748-1a0e-4e2e-a6fb-0542bc66dfa3" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

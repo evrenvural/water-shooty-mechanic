@@ -6,7 +6,7 @@ public class Umbrella : MonoBehaviour
 {
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag == "Bullet" || collider.tag == "BulletEnemy")
+        if (collider.tag == "BulletEnemy")
             Destroy(collider.gameObject);
     }
 }

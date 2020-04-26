@@ -78,6 +78,9 @@ public class GameManager : MonoBehaviour
         numberOfDeathText.text = "Ölü Düşman Sayısı: " + numberOfDeath;
 
         // Umbrella Counter
+        if (player.State == Utils.HumanState.isWalking)
+            umbrellaCounterText.text = "";
+        else
             umbrellaCounterText.text = "Şemsiye Sayacı: " + player.SecondsForUmbrella + "/5";
 
     }
