@@ -90,7 +90,7 @@ public class Player : MonoBehaviour, ILivingCreature
                 {
                     if (wait)
                     {
-                        Instantiate(bullet, transform.position, Quaternion.identity)
+                        Instantiate(bullet, Utils.FireAimPosition(transform.position), Quaternion.identity)
                                                 .GetComponent<Rigidbody>()
                                                 .AddForce((enemies[EnemyIndex].transform.position
                                                 - transform.position)

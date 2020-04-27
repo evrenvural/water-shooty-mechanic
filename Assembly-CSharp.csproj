@@ -73,6 +73,10 @@
     <Compile Include="Assets\Scripts\TimeCounter.cs" />
     <Compile Include="Assets\Scripts\Umbrella.cs" />
     <Compile Include="Assets\Scripts\Utils.cs" />
+    <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\CameraLogicFree.cs" />
+    <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\DemoFree.cs" />
+    <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\SimpleCharacterControlFree.cs" />
+    <None Include="Assets\Supercyan Character Pack Free Sample\Shaders\FreeCelShader.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/evrenvural/Documents/Projeler/water-shooty-mechanic/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
