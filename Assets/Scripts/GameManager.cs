@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
         if (player.State == Utils.HumanState.isWalking)
             umbrellaCounterText.text = "";
         else
-            umbrellaCounterText.text = "Şemsiye Sayacı: " + player.SecondsForUmbrella + "/5";
+            umbrellaCounterText.text = "Şemsiye Sayacı: " + player.SecondsForUmbrella + "/" + player.OpenUmbrellaSeconds;
 
     }
 

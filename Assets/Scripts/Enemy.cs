@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour, ILivingCreature
     GameObject bullet;
     
     Player player;
+
     bool playerTriggered = false;
     bool wait = true;
     
@@ -41,6 +42,7 @@ public class Enemy : MonoBehaviour, ILivingCreature
             if (!playerTriggered)
             {
                 player.EnemyIndex++;
+                player.Enemies[player.EnemyIndex].GetComponent<Renderer>().enabled = true;
                 playerTriggered = true;
             }
         }

@@ -26,11 +26,29 @@ public class Player : MonoBehaviour, ILivingCreature
 
     public Utils.HumanState State { get; set; } = Utils.HumanState.isWalking;
 
+    public GameObject[] Enemies
+    {
+        get { return enemies; }
+        private set { enemies = value; }
+    }
+
+    public GameObject Umbrella
+    {
+        get { return umbrella; }
+        private set { umbrella = value; }
+    }
+
     public bool IsDead { get; set; } = false;         
 
     public int EnemyIndex { get; set; } = 0;
     
     public int Health { get; set; } = 15;
+
+    public int OpenUmbrellaSeconds
+    {
+        get { return openUmbrellaSeconds; }
+        set { openUmbrellaSeconds = value; }
+    }
 
     public int SecondsForUmbrella
     {
@@ -39,8 +57,8 @@ public class Player : MonoBehaviour, ILivingCreature
         {
             if (value <= 0)
                 secondsForUmbrella = 0;
-            else if (value >= 5)
-                secondsForUmbrella = 5;
+            else if (value >= openUmbrellaSeconds)
+                secondsForUmbrella = openUmbrellaSeconds;
             else
                 secondsForUmbrella = value;
         }
